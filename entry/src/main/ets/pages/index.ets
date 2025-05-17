@@ -1,8 +1,8 @@
-import router from '@ohos.router';
+import router from '@ohos.router'
 
 @Entry
 @Component
-struct MainPage {
+struct Index {
   build() {
     Column() {
 

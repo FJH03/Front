@@ -1,10 +1,10 @@
 // api/login.js
-import http from '@ohos.net.http';
+import http from '@ohos.net.http'
 import { LoginForm } from "../models/login"
-import promptAction from '@ohos.promptAction';
+import promptAction from '@ohos.promptAction'
+import { BASE_URL } from "../models/net"
 
 // 基础配置
-const BASE_URL = 'http://localhost:8080'; // 替换为实际API地址
 const httpRequest = http.createHttp();
 
 // 通用请求函数
@@ -32,8 +32,6 @@ async function requestPost(path: string, data?: object) {
     throw new Error(`请求失败：${response.responseCode}`);
   } catch (error) {
     promptAction.showToast({ message: '网络请求异常', duration: 2000 });
-  } finally {
-    httpRequest.destroy();
   }
 }
 
