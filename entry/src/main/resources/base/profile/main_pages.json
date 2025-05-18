@@ -1,6 +1,7 @@
 {
   "src": [
     "pages/login",
-    "pages/index"
+    "pages/index",
+    "pages/user"
   ]
 }

@@ -2,6 +2,7 @@ import router from '@ohos.router';
 import { loginApi, sendMsgApi } from '../api/loginJs';
 import promptAction from '@ohos.promptAction';
 import { LoginForm, token } from '../models/login';
+import { font } from '@kit.ArkUI';
 
 interface ApiResponse<T = void> {
   code: number;
@@ -16,24 +17,50 @@ struct login {
   @State msgFlag: boolean = false
   @State loading: boolean = false
 
+  aboutToAppear() {
+    font.registerFont({
+      familyName: 'PingFangSC-Regular', // 注册的字体名称
+      familySrc: '/fonts/PingFangSC-Regular.ttf' // font文件夹与pages目录同级
+    })
+  }
+
   build() {
     Column() {
       // 头部标题
       Text('登录')
-        .fontSize(24)
-        .fontWeight(FontWeight.Bold)
+        .fontSize(18)
+        .fontWeight(500)
+        .lineHeight(88)
+        .fontColor('#ffffff')
         .margin({ top: 40, bottom: 40 })
+        .opacity(1)
+        .textAlign(TextAlign.Center)
+        .fontFamily('PingFangSC-Regular')
+        .backgroundColor('#333333')
+        .width('100%')
 
       // 输入区域
       Column() {
-        TextInput({ placeholder: '请输入手机号码' })
-          .width('90%')
-          .height(50)
-          .type(InputType.Normal)
-          .placeholderFont({ size: 16 })
-          .onChange((value: string) => {
-            this.form.phone = value
-          })
+        Row() {
+          TextInput({ placeholder: '请输入手机号码' })
+            .width('80%')
+            .height(50)
+            .maxLength(20)
+            .type(InputType.Normal)
+            .placeholderFont({ size: 16 })
+            .onChange((value: string) => {
+              this.form.phone = value
+            })
+
+          Text('获取验证码')
+            .fontSize(14)
+            .fontColor('#007AFF')
+            .margin({ top: 10 })
+            .onClick(() => this.getCode())
+        }
+        .width('90%')
+        .justifyContent(FlexAlign.SpaceBetween)
+
 
         Divider().color('#eeeeee').margin({ top: 10, bottom: 10 })
 
@@ -45,12 +72,6 @@ struct login {
           .onChange((value: string) => {
             this.form.code = value
           })
-
-        Text('获取验证码')
-          .fontSize(14)
-          .fontColor('#007AFF')
-          .margin({ top: 10 })
-          .onClick(() => this.getCode())
       }
       .width('100%')
 
