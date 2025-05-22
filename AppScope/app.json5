@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "cnsr.fjh03.front",
+    "bundleName": "cnsr.fjh03.myapplication",
     "vendor": "example",
     "versionCode": 1000000,
     "versionName": "1.0.0",
