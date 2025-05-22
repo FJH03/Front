@@ -1,7 +1,10 @@
 import promptAction from '@ohos.promptAction'
 import http from '@ohos.net.http'
 
-export const BASE_URL = 'http://localhost:8080';
+export const BASE_URL = 'http://192.168.1.8:8080';
+
+export const Front_URL = BASE_URL + '/front/page/login.html'
+
 
 // 基础配置
 const httpRequest = http.createHttp();
