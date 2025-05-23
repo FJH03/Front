@@ -94,7 +94,7 @@ struct AddOrderPage {
                   .height(60)
                   .margin(8)
                   .onError(() => {
-                    //todo: 我觉得不需要
+                    //Todo: 我觉得不需要
                   })
 
                 Column() {
@@ -117,7 +117,7 @@ struct AddOrderPage {
           // 备注输入
           Column() {
             Text('备注').fontSize(16).margin(12)
-            TextInput({ text: this.note, placeholder: '请输入您需要备注的信息' })
+            TextInput({ text: this.note, placeholder: '请输入备注的信息' })
               .height(80)
               .maxLength(50)
               .onChange(value => this.note = value)
@@ -148,7 +148,7 @@ struct AddOrderPage {
             .layoutWeight(1)
             .margin({ left: 16 })
 
-            Button('去支付')
+            Button('提交')
               .backgroundColor(this.cartData.length > 0 ? '#ff5500' : '#cccccc')
               .onClick(() => addOrderApi(this.cartData))
           }

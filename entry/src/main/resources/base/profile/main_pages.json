@@ -3,6 +3,8 @@
     "pages/Index",
     "pages/add-order",
     "pages/login",
-    "pages/AddressPage"
+    "pages/addressPage",
+    "pages/no-wifi",
+    "pages/address-edit"
   ]
 }

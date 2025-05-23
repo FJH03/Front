@@ -1,8 +1,8 @@
 import { requestPost, requestDelete, requestGet, requestPut } from '../models/net'
 
 // 请求地址列表
-export async function addressListApi(params: object) {
-  return await requestGet('/addressBook/list', params);
+export async function addressListApi() {
+  return await requestGet('/addressBook/list');
 }
 
 // 获取最后更新的地址信息
