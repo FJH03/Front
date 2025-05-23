@@ -5,11 +5,6 @@ export async function addressListApi() {
   return await requestGet('/addressBook/list');
 }
 
-// 获取最后更新的地址信息
-export async function addressLastUpdateApi() {
-  return await requestGet('/addressBook/lastUpdate');
-}
-
 // 添加地址
 export async function addAddressApi(params: object) {
   return await requestPost('/addressBook', params);
@@ -23,11 +18,6 @@ export async function updateAddressApi(params: object) {
 // 删除地址
 export async function deleteAddressApi(params: object) {
   return await requestDelete('/addressBook', params);
-}
-
-// 设置默认地址
-export async function setDefaultAddressApi() {
-  return await requestPut('/addressBook/default');
 }
 
 // 获取默认地址

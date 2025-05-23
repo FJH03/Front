@@ -1,7 +1,7 @@
 import router from '@ohos.router'
 import { Address, CartItem } from '../models/add-order'
 import { getDefaultAddressApi } from '../api/addressJs'
-import { clearCartApi } from  '../api/mainJs'
+import { addCartApi, clearCartApi } from  '../api/mainJs'
 import { addOrderApi } from '../api/orderJs'
 
 @Entry
@@ -94,7 +94,7 @@ struct AddOrderPage {
                   .height(60)
                   .margin(8)
                   .onError(() => {
-                    //Todo: 我觉得不需要
+                    addCartApi(this.address)
                   })
 
                 Column() {

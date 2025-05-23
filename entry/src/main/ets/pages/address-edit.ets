@@ -1,7 +1,5 @@
 import { router } from '@kit.ArkUI';
-import prompt from '@ohos.prompt';
 import { AddressItem } from '../models/AddressPage';
-import { ValidateUtil } from '../utils/ValidateUtil';
 import { addressListApi, updateAddressApi, deleteAddressApi, addAddressApi } from '../api/addressJs'
 
 @Entry
@@ -22,15 +20,7 @@ struct AddressEditPage {
 
   aboutToAppear() {
     addressListApi();
-  }
-
-  // 构建表单项
-  @Builder
-  private FormItem(title: string, _content: () => void) {
-    Row() {
-      Text(title)
-        .fontSize(18)
-    }
+    this.GenderSelector();
   }
 
   // 构建性别选择
@@ -56,31 +46,6 @@ struct AddressEditPage {
 
   build() {
     Column() {
-      Scroll() {
-        Column() {
-          // 联系人输入
-          this.FormItem('联系人：', () => {
-            TextInput({ text: this.form.consignee })
-              .onChange(value => this.form.consignee = value)
-          })
-
-          // 手机号输入
-          this.FormItem('手机号：', () => {
-            TextInput({ text: this.form.phone })
-              .maxLength(11)
-              .onChange(value => this.form.phone = value)
-          })
-
-          // 地址输入
-          this.FormItem('地址：', () => {
-            TextInput({ text: this.form.detail })
-              .maxLength(140)
-              .onChange(value => this.form.detail = value)
-          })
-
-        }
-        .padding(16)
-      }
 
       // 操作按钮
       Column() {
@@ -104,20 +69,9 @@ struct AddressEditPage {
 
   // 验证并提交表单
   private async validateAndSubmit() {
-    if (!ValidateUtil.validateName(this.form.consignee)) {
-      return prompt.showToast({ message: '请输入有效联系人' });
-    }
-    if (!ValidateUtil.validatePhone(this.form.phone)) {
-      return prompt.showToast({ message: '手机号格式不正确' });
-    }
-    if (!this.form.detail) {
-      return prompt.showToast({ message: '请输入详细地址' });
-    }
-
     try {
       updateAddressApi(this.form)
     } catch (error) {
-      prompt.showToast({ message: '保存失败，请重试' });
       addAddressApi(this.form)
     } finally {
       router.replaceUrl({ url: 'pages/AddressPage' });

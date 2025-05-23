@@ -5,6 +5,8 @@
     "pages/login",
     "pages/addressPage",
     "pages/no-wifi",
-    "pages/address-edit"
+    "pages/address-edit",
+    "pages/user",
+    "pages/order"
   ]
 }
