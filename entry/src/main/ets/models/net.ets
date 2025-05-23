@@ -3,9 +3,6 @@ import http from '@ohos.net.http'
 
 export const BASE_URL = 'http://192.168.1.8:8080';
 
-export const Front_URL = BASE_URL + '/front/page/login.html'
-
-
 // 基础配置
 const httpRequest = http.createHttp();
 
@@ -104,3 +101,5 @@ export async function requestPut(path: string, data?: object) {
     promptAction.showToast({ message: '网络请求异常', duration: 2000 });
   }
 }
+
+export const Front_URL = BASE_URL + '/front/page/login.html'
